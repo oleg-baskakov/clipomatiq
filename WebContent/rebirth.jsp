@@ -2,7 +2,8 @@
 <%@ page import="java.util.*, com.clipomatiq.youtube.*, com.clipomatiq.Genre, com.clipomatiq.db.DBProcessor,com.clipomatiq.ClipomatiqInside"%>
 <%!int total = DBProcessor.getTotalClips();
 	ArrayList genries = DBProcessor.getGenries();
-	int maxminRate[] = DBProcessor.getMinMaxRate4Genre();%>
+	int maxminRate[] = DBProcessor.getMinMaxRate4Genre();
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -36,16 +37,8 @@
 
 <script>
 	function setVideo(videoLink) {
-
-		//var videoObj = document.getElementById('more');
-		//alert(document.all.item('more').innerHTML);
-		//		document.all.item('more').innerHTML=
-		//		'<object id="videocore" name="videocore" width="425" height="344">		<param id="pMovie" name="movie" 			 value="http://www.youtube.com/v/'+videoLink+'&fs=1&"></param>	 	<embed src="http://www.youtube.com/v/'+videoLink+'&fs=1&" type="application/x-shockwave-flash"	 		allowscriptaccess="always" allowfullscreen="true" width="425" height="344">	 	</embed>	 </object>';
 		document.all.item('more').innerHTML = '<embed src="http://www.youtube.com/v/'+videoLink+'&fs=1&" type="application/x-shockwave-flash"	 		allowscriptaccess="always" allowfullscreen="true" width="425" height="344">	 	</embed>	';
 
-		//	alert(videoObj.innerHTML);
-		//videoObj.param['movie'].value='http://www.youtube.com/v/'+videoLink+'&fs=1';
-		//videoObj.embed.src='http://www.youtube.com/v/'+videoLink+'&fs=1';
 
 	}
 </script>
@@ -57,19 +50,9 @@
     <a href="http://<%=pageContext.getRequest().getServerName()%>"><img src="../images/header_pic.jpg" alt="Clipomatiq" /> </a>
     <ul>
 
-      <!-- <li><a href="#">home</a></li>
-<li><a name="state" href="#">contact</a></li> -->
       <li style="color: white">Total videos <%=total%></li>
     </ul>
 
-
-
-    <!-- 
-<form name="search_box" method="post"  action="">
-<label>search</label>
-<input type="text" name="textbox" value="Your Email" />
-<input type="button" name="buttone" class="button" value="" title="button" />
-</form> -->
   </div>
   <h4 style="color: white">
     <%=label%>
@@ -81,7 +64,6 @@
 
     <!--left side start -->
     <div id="leftPan">
-
 
       <%
       	ArrayList clips = (ArrayList) request.getAttribute("clips");
@@ -96,7 +78,6 @@
 
       	if (request.getAttribute("toggleGenre") != null) {
       %>
-
 
       <table>
         <%
@@ -123,30 +104,23 @@
               <p>
                 <a href="#" onclick="setVideo('<%=clip.getId()%>');return false;"> <img src="<%=clip.getThumb()%>" />
                 </a>
-
               </p>
-
             </div>
-
           </td>
-
 
           <%
           	}
           %>
-        
       </table>
-
       <%
       	}
       %>
 
-
-      <br>
-        <h3><%=gName%>
-        </h3> <%
- 	//if(request.getAttribute("toggleGenre")!=null){
- %>
+      <br/>
+        <h3><%=gName%></h3> 
+        <%--
+ 	if(request.getAttribute("toggleGenre")!=null){
+ --%>
         <p id="pGenries">
           <%
           	Genre genre;
@@ -164,24 +138,17 @@
           <%
           	}
           %>
-
-
-
-        </p> <%
- 	//}
- %>
+        </p> 
+        <%--
+ 	}
+ --%>
       
     </div>
     <!--left side end -->
     <!--right side start -->
     <div id="rightPan">
-
-
       <table>
         <%
-        	//ArrayList clips=(ArrayList)request.getAttribute("clips");
-        	//YTEntry clip;
-        	//	boolean flipper;
         	size = clips.size() > 8 ? 8 : clips.size();
         	for (int i = 6; i < size; i++) {
         		clip = (YTEntry) clips.get(i);
@@ -193,12 +160,12 @@
         %>
         </tr>
         <%
-        	}
-        			flipper = true;
+                	}
+                	flipper = true;
         %>
         <tr>
           <%
-          	}
+             	}
           %>
           <td>
             <div id="thumb">
@@ -206,20 +173,14 @@
               <p>
                 <a href="#" onclick="setVideo('<%=clip.getId()%>');return false;"> <img src="<%=clip.getThumb()%>" />
                 </a>
-
               </p>
-
             </div>
-
           </td>
-
-
           <%
           	}
           %>
         
       </table>
-
 
       <p class="more" id="more">
 
@@ -246,9 +207,6 @@
 
       <table>
         <%
-        	//ArrayList clips=(ArrayList)request.getAttribute("clips");
-        	//YTEntry clip;
-        	//	boolean flipper;
         	size = clips.size() > 14 ? 14 : clips.size();
         	for (int i = 8; i < size; i++) {
         		clip = (YTEntry) clips.get(i);
@@ -273,31 +231,18 @@
 
               <a href="#" onclick="setVideo('<%=clip.getId()%>');return false;"> <img src="<%=clip.getThumb()%>" />
               </a>
-
-
-
             </div>
-
           </td>
-
-
           <%
           	}
           %>
-        
       </table>
-
-
     </div>
     <!--right side end -->
-
 
     <div id="ads">
       <table>
         <%
-        	//ArrayList clips=(ArrayList)request.getAttribute("clips");
-        	//YTEntry clip;
-        	//	boolean flipper;
         	size = clips.size() > 26 ? 26 : clips.size();
 
         	for (int i = 14; i < size; i++) {
@@ -323,19 +268,13 @@
               <p>
                 <a href="#" onclick="setVideo('<%=clip.getId()%>');return false;"> <img src="<%=clip.getThumb()%>" />
                 </a>
-
               </p>
-
             </div>
-
           </td>
           <% 
 		}
 	 %>
-        
       </table>
-
-
       <h4 style="color: white">Wanna more videos? Just refresh this page :)</h4>
 
     </div>
@@ -352,27 +291,13 @@
         &copy;2008 <a href="mailto:2madman@mail.ru">mdmn</a>
       </p>
       <ul>
-        <li>Watch the best <%=gName%> music videos
-        </li>
-
+        <li>Watch the best <%=gName%> music videos </li>
       </ul>
-
       <a href="http://www.youtube.com"> <img src="/images/logo-youtube.gif" />
       </a>
-
-
-
-
-
-
-
     </div>
   </div>
   <!--footer 
 end -->
-
-
-  -
-
 </body>
 </html>
